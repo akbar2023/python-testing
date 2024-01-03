@@ -15,3 +15,12 @@ class RestaurantReviews:
         if restaurant not in self.reviews:
             return "Review not found."
         return self.add_review(restaurant, new_review_text, new_rating)
+    
+# Exercice : Faire le delete_review, et écrire les tests correspondants.
+    # TDD possible
+    def delete_review(self, restaurant):
+        # Ecrire l'implementation
+        if restaurant not in self.reviews:
+            raise ValueError("Review not found to delete.")
+        del self.reviews[restaurant]
+        return "Review deleted for {}".format(restaurant)
