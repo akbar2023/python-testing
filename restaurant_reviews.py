@@ -3,10 +3,15 @@ class RestaurantReviews:
         self.reviews = {}
 
     def add_review(self, restaurant, review_text, rating):
-        return 
+        if rating < 1 or rating > 5:
+            return "Invalid rating. It must be between 1 and 5."
+        self.reviews[restaurant] = {'review_text': review_text, 'rating': rating}
+        return f"Review added for {restaurant}."
 
     def get_review(self, restaurant):
-        return 
+        return self.reviews.get(restaurant, "Review not found.")
 
     def update_review(self, restaurant, new_review_text, new_rating):
-        return 
+        if restaurant not in self.reviews:
+            return "Review not found."
+        return self.add_review(restaurant, new_review_text, new_rating)
