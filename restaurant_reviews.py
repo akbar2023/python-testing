@@ -24,3 +24,16 @@ class RestaurantReviews:
             raise ValueError("Review not found to delete.")
         del self.reviews[restaurant]
         return f"Review deleted for {restaurant}."
+    
+
+class Menu:
+    def __init__(self):
+        self.menu = {}
+
+    def add_menu_item(self, restaurant_name, item_name, description, price):
+        if price <= 0:
+            raise ValueError("Price must be positive.")
+        if restaurant_name not in self.menu:
+            self.menu[restaurant_name] = {}
+        self.menu[restaurant_name][item_name] = {"description": description, "price": price}
+        return "Menu item added for {}.".format(restaurant_name)
